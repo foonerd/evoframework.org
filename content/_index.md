@@ -135,91 +135,77 @@ Evo is not framework + your app. It is three tiers, each with its
 own release cadence, its own signing key, and its own job.
 
 <div class="tier-diagram-wrap">
-<svg class="tier-diagram" viewBox="0 0 800 660" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="tier-diagram-title tier-diagram-desc">
-<title id="tier-diagram-title">Three tiers: distribution, steward, consumers</title>
-<desc id="tier-diagram-desc">A vertical architecture diagram. The distribution tier feeds the steward at the centre across four contracts at the boundary; the steward serves consumers below across the client socket.</desc>
-
+<svg class="tier-diagram" viewBox="0 0 1000 770" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="tier-diagram-title">
+<title id="tier-diagram-title">Three tiers with flow lines: distribution, steward, consumers</title>
 <defs>
-<linearGradient id="tier-bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0%" stop-color="#0e1d30"/>
-<stop offset="55%" stop-color="#102a44"/>
-<stop offset="100%" stop-color="#0a1828"/>
-</linearGradient>
-
-<linearGradient id="steward-bg" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0%" stop-color="#0d2236"/>
-<stop offset="50%" stop-color="#143a5c"/>
-<stop offset="100%" stop-color="#0a1d30"/>
-</linearGradient>
-
-<linearGradient id="brand-mark-grad" x1="0" y1="0" x2="1" y2="1">
-<stop offset="0%" stop-color="#00d4aa"/>
-<stop offset="100%" stop-color="#00a080"/>
-</linearGradient>
-
-<filter id="tier-glow" x="-10%" y="-15%" width="120%" height="130%">
-<feGaussianBlur stdDeviation="4" result="blur"/>
-<feFlood flood-color="#00d4aa" flood-opacity="0.18"/>
-<feComposite in2="blur" operator="in" result="glow"/>
-<feMerge>
-<feMergeNode in="glow"/>
-<feMergeNode in="SourceGraphic"/>
-</feMerge>
-</filter>
-
-<filter id="steward-glow" x="-10%" y="-15%" width="120%" height="130%">
-<feGaussianBlur stdDeviation="7" result="blur"/>
-<feFlood flood-color="#00d4aa" flood-opacity="0.32"/>
-<feComposite in2="blur" operator="in" result="glow"/>
-<feMerge>
-<feMergeNode in="glow"/>
-<feMergeNode in="SourceGraphic"/>
-</feMerge>
-</filter>
-
-<marker id="arrow" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-<path d="M2,2 L10,6 L2,10 z" fill="#00d4aa"/>
-</marker>
+<linearGradient id="tier-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0e1d30"/><stop offset="55%" stop-color="#102a44"/><stop offset="100%" stop-color="#0a1828"/></linearGradient>
+<linearGradient id="steward-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0d2236"/><stop offset="50%" stop-color="#163a5e"/><stop offset="100%" stop-color="#0a1d30"/></linearGradient>
+<linearGradient id="brand-mark-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00d4aa"/><stop offset="100%" stop-color="#00a080"/></linearGradient>
+<radialGradient id="steward-aura-bg" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#00d4aa" stop-opacity="0.16"/><stop offset="55%" stop-color="#00d4aa" stop-opacity="0.04"/><stop offset="100%" stop-color="#00d4aa" stop-opacity="0"/></radialGradient>
+<pattern id="tier-grid-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="0" cy="0" r="0.7" fill="#1f3a5c" opacity="0.55"/></pattern>
+<filter id="tier-glow" x="-10%" y="-15%" width="120%" height="130%"><feGaussianBlur stdDeviation="4" result="blur"/><feFlood flood-color="#00d4aa" flood-opacity="0.18"/><feComposite in2="blur" operator="in" result="glow"/><feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="steward-glow" x="-10%" y="-15%" width="120%" height="130%"><feGaussianBlur stdDeviation="9" result="blur"/><feFlood flood-color="#00d4aa" flood-opacity="0.34"/><feComposite in2="blur" operator="in" result="glow"/><feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="tier-particle-glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="2.2" result="blur"/><feFlood flood-color="#00d4aa" flood-opacity="0.95"/><feComposite in2="blur" operator="in" result="glow"/><feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<marker id="arrow" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M2,2 L10,6 L2,10 z" fill="#00d4aa"/></marker>
+<path id="orbit-1" d="M 370,425 a 130,25 0 1,0 260,0 a 130,25 0 1,0 -260,0 Z" fill="none"/>
+<path id="orbit-2" d="M 260,425 a 240,40 0 1,0 480,0 a 240,40 0 1,0 -480,0 Z" fill="none"/>
+<path id="orbit-3" d="M 160,425 a 340,55 0 1,0 680,0 a 340,55 0 1,0 -680,0 Z" fill="none"/>
 </defs>
-
-<g filter="url(#tier-glow)">
-<rect x="80" y="20" width="640" height="140" rx="18" fill="url(#tier-bg)" stroke="#1f3a5c" stroke-width="1"/>
-<rect x="80" y="20" width="640" height="3" rx="1.5" fill="url(#brand-mark-grad)" opacity="0.7"/>
-</g>
-<text x="400" y="64" text-anchor="middle" class="svg-tier-label">DISTRIBUTION</text>
-<text x="400" y="92" text-anchor="middle" class="svg-tier-subtitle">evo-device-&lt;vendor&gt;</text>
-<text x="400" y="128" text-anchor="middle" class="svg-tier-content">catalogue . plugins . branding . packaging</text>
-
-<line class="svg-connector" x1="400" y1="170" x2="400" y2="220" stroke="#00d4aa" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#arrow)"/>
-<text x="420" y="200" class="svg-connector-label">four contracts at the boundary</text>
-
-<g filter="url(#steward-glow)">
-<rect x="60" y="240" width="680" height="200" rx="20" fill="url(#steward-bg)" stroke="#256086" stroke-width="1.5"/>
-<rect x="60" y="240" width="680" height="4" rx="2" fill="url(#brand-mark-grad)"/>
-<g transform="translate(696, 256)">
-<rect width="22" height="22" rx="5" fill="url(#brand-mark-grad)"/>
-</g>
-</g>
-<text x="400" y="294" text-anchor="middle" class="svg-tier-label svg-tier-label-strong">THE STEWARD</text>
-<text x="400" y="326" text-anchor="middle" class="svg-tier-subtitle">evo-core</text>
-<text x="400" y="368" text-anchor="middle" class="svg-tier-content">catalogue . admission . subjects . relations</text>
-<text x="400" y="396" text-anchor="middle" class="svg-tier-content">custody ledger . projections . happenings bus</text>
-
-<line class="svg-connector" x1="400" y1="450" x2="400" y2="500" stroke="#00d4aa" stroke-width="2" stroke-dasharray="4 5" marker-end="url(#arrow)"/>
-<text x="420" y="480" class="svg-connector-label">client socket</text>
-
-<g filter="url(#tier-glow)">
-<rect x="80" y="520" width="640" height="120" rx="18" fill="url(#tier-bg)" stroke="#1f3a5c" stroke-width="1"/>
-<rect x="80" y="520" width="640" height="3" rx="1.5" fill="url(#brand-mark-grad)" opacity="0.7"/>
-</g>
-<text x="400" y="568" text-anchor="middle" class="svg-tier-label">CONSUMERS</text>
-<text x="400" y="608" text-anchor="middle" class="svg-tier-content">frontend . CLIs . bridges . automation</text>
+<rect x="0" y="0" width="1000" height="770" fill="url(#tier-grid-dots)"/>
+<ellipse cx="500" cy="425" rx="650" ry="320" fill="url(#steward-aura-bg)"/>
+<g filter="url(#tier-glow)"><rect x="80" y="20" width="840" height="140" rx="18" fill="url(#tier-bg)" stroke="#1f3a5c" stroke-width="1"/><rect x="80" y="20" width="840" height="3" rx="1.5" fill="url(#brand-mark-grad)" opacity="0.7"/></g>
+<text x="500" y="64" text-anchor="middle" class="svg-tier-label">DISTRIBUTION</text>
+<text x="500" y="92" text-anchor="middle" class="svg-tier-subtitle">evo-device-&lt;vendor&gt;</text>
+<text x="500" y="128" text-anchor="middle" class="svg-tier-content">catalogue . plugins . branding . packaging</text>
+<text x="200" y="184" text-anchor="middle" class="contract-channel-label">SDK</text>
+<text x="400" y="184" text-anchor="middle" class="contract-channel-label">WIRE</text>
+<text x="600" y="184" text-anchor="middle" class="contract-channel-label">PACKAGING</text>
+<text x="800" y="184" text-anchor="middle" class="contract-channel-label">CATALOGUE</text>
+<line x1="200" y1="195" x2="200" y2="270" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.55" marker-end="url(#arrow)"/>
+<line x1="400" y1="195" x2="400" y2="270" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.55" marker-end="url(#arrow)"/>
+<line x1="600" y1="195" x2="600" y2="270" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.55" marker-end="url(#arrow)"/>
+<line x1="800" y1="195" x2="800" y2="270" stroke="#00d4aa" stroke-width="1.5" stroke-dasharray="3 5" opacity="0.55" marker-end="url(#arrow)"/>
+<circle cx="200" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="200;265" dur="2.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="0s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="200" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="200;265" dur="2.8s" repeatCount="indefinite" begin="1.4s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="1.4s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="400" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="200;265" dur="2.8s" repeatCount="indefinite" begin="0.7s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="0.7s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="400" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="200;265" dur="2.8s" repeatCount="indefinite" begin="2.1s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="2.1s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="600" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="200;265" dur="2.8s" repeatCount="indefinite" begin="0.35s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="0.35s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="600" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="200;265" dur="2.8s" repeatCount="indefinite" begin="1.75s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="1.75s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="800" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="200;265" dur="2.8s" repeatCount="indefinite" begin="1.05s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="1.05s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="800" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="200;265" dur="2.8s" repeatCount="indefinite" begin="2.45s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="2.8s" repeatCount="indefinite" begin="2.45s" keyTimes="0;0.12;0.85;1"/></circle>
+<text x="500" y="252" text-anchor="middle" class="contract-master-label">four contracts at the boundary</text>
+<g filter="url(#steward-glow)"><rect x="60" y="280" width="880" height="300" rx="22" fill="url(#steward-bg)" stroke="#256086" stroke-width="1.5"/><rect x="60" y="280" width="880" height="4" rx="2" fill="url(#brand-mark-grad)"/></g>
+<circle cx="500" cy="425" fill="none" stroke="#00d4aa" stroke-width="1.5"><animate attributeName="r" values="60;220" dur="1.5s" repeatCount="indefinite" begin="0s"/><animate attributeName="opacity" values="0;0.42;0" dur="1.5s" repeatCount="indefinite" begin="0s" keyTimes="0;0.18;1"/></circle>
+<circle cx="500" cy="425" fill="none" stroke="#00d4aa" stroke-width="1"><animate attributeName="r" values="60;180" dur="1.5s" repeatCount="indefinite" begin="0.21s"/><animate attributeName="opacity" values="0;0.28;0" dur="1.5s" repeatCount="indefinite" begin="0.21s" keyTimes="0;0.18;1"/></circle>
+<ellipse cx="500" cy="425" rx="340" ry="55" fill="none" stroke="#1f3a5c" stroke-width="0.8" opacity="0.4"/>
+<ellipse cx="500" cy="425" rx="240" ry="40" fill="none" stroke="#1f3a5c" stroke-width="0.8" opacity="0.35"/>
+<ellipse cx="500" cy="425" rx="130" ry="25" fill="none" stroke="#1f3a5c" stroke-width="0.8" opacity="0.3"/>
+<circle r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)" opacity="0.85"><animateMotion dur="6s" repeatCount="indefinite"><mpath href="#orbit-1"/></animateMotion></circle>
+<circle r="2" fill="#00d4aa" filter="url(#tier-particle-glow)" opacity="0.7"><animateMotion dur="9s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1"><mpath href="#orbit-2"/></animateMotion></circle>
+<circle r="2" fill="#00d4aa" filter="url(#tier-particle-glow)" opacity="0.6"><animateMotion dur="13s" repeatCount="indefinite"><mpath href="#orbit-3"/></animateMotion></circle>
+<circle r="1.5" fill="#00d4aa" filter="url(#tier-particle-glow)" opacity="0.55"><animateMotion dur="7.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1"><mpath href="#orbit-3"/></animateMotion></circle>
+<text x="500" y="320" text-anchor="middle" class="svg-tier-label svg-tier-label-strong">THE STEWARD</text>
+<text x="500" y="350" text-anchor="middle" class="svg-tier-subtitle">evo-core</text>
+<text x="500" y="510" text-anchor="middle" class="svg-tier-content">catalogue . admission . subjects . relations</text>
+<text x="500" y="538" text-anchor="middle" class="svg-tier-content">custody ledger . projections . happenings bus</text>
+<g transform="translate(896, 296)"><rect width="24" height="24" rx="6" fill="url(#brand-mark-grad)"><animate attributeName="opacity" values="0.85;1;0.85;0.97;0.85;0.85" keyTimes="0;0.07;0.14;0.21;0.28;1" dur="1.5s" repeatCount="indefinite"/></rect></g>
+<line x1="500" y1="580" x2="500" y2="650" stroke="#00d4aa" stroke-width="2" marker-end="url(#arrow)"/>
+<circle cx="498" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="585;645" dur="3s" repeatCount="indefinite" begin="0s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="3s" repeatCount="indefinite" begin="0s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="498" r="2.5" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="585;645" dur="3s" repeatCount="indefinite" begin="1.5s"/><animate attributeName="opacity" values="0;0.9;0.9;0" dur="3s" repeatCount="indefinite" begin="1.5s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="503" r="1.8" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="645;585" dur="3.5s" repeatCount="indefinite" begin="0.8s"/><animate attributeName="opacity" values="0;0.55;0.55;0" dur="3.5s" repeatCount="indefinite" begin="0.8s" keyTimes="0;0.12;0.85;1"/></circle>
+<circle cx="503" r="1.8" fill="#00d4aa" filter="url(#tier-particle-glow)"><animate attributeName="cy" values="645;585" dur="3.5s" repeatCount="indefinite" begin="2.55s"/><animate attributeName="opacity" values="0;0.55;0.55;0" dur="3.5s" repeatCount="indefinite" begin="2.55s" keyTimes="0;0.12;0.85;1"/></circle>
+<text x="514" y="618" class="contract-master-label">client socket</text>
+<g filter="url(#tier-glow)"><rect x="80" y="650" width="840" height="120" rx="18" fill="url(#tier-bg)" stroke="#1f3a5c" stroke-width="1"/><rect x="80" y="650" width="840" height="3" rx="1.5" fill="url(#brand-mark-grad)" opacity="0.7"/></g>
+<text x="500" y="694" text-anchor="middle" class="svg-tier-label">CONSUMERS</text>
+<text x="500" y="734" text-anchor="middle" class="svg-tier-content">frontend . CLIs . bridges . automation</text>
 </svg>
-
 <p class="tier-diagram-caption">
-The framework holds the middle. Distributions adopt reference generic
-devices and add the vendor layer. None of these tiers know about each
-other except through the contracts.
+The framework holds the middle. The four contracts at the top boundary
+are the SDK, the wire protocol, the packaging shape, and the catalogue
+shape. The single contract at the bottom is the client socket. Inside
+the steward, the orbital flow is what the steward does continuously:
+admit, place, compose, dispatch, project, notify - the same heartbeat
+the framework keeps everywhere.
 </p>
 </div>
 

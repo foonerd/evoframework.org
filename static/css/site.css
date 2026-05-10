@@ -721,6 +721,24 @@ tr:last-child td {
   animation: connector-pulse 3.4s ease-in-out infinite;
 }
 
+/* Tier diagram (homepage) - additional classes for the next-gen version */
+.contract-channel-label {
+  fill: #00d4aa;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.contract-master-label {
+  fill: #7ea0bc;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.03em;
+}
+
 /* Hub diagram (concept page) ------------------------------- */
 
 .hub-diagram-wrap {
