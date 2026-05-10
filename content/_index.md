@@ -109,6 +109,26 @@ are open invitations. The
 
 <hr class="section-divider">
 
+## Light by design
+
+Pure Rust. No garbage collector, no JavaScript runtime, no PHP, no
+JVM, no shell pipelines holding state. The framework is one
+long-running process and the plugins it admits, and every
+architectural choice above this line is also an efficiency choice.
+
+A typical evo steward uses tens of MB of memory at idle and a
+fraction of a percent of CPU. The same workload on a Node.js or
+Python application server uses hundreds of MB of memory, a JIT or
+interpreter warmup window, and GC pauses every few seconds. The
+runtime overhead a VM-hosted stack pays is simply not paid here.
+
+The consequences are practical. A wearable's battery lasts longer.
+A datacenter's cooling bill is smaller. A satellite's solar panel
+covers more workload. Less work uses less power; that is the whole
+story.
+
+<hr class="section-divider">
+
 ## Three tiers
 
 Evo is not framework + your app. It is three tiers, each with its

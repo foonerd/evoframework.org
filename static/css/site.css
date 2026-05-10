@@ -529,8 +529,9 @@ tr:last-child td {
   border: 1px solid color-mix(in oklab, var(--primary) 12%, transparent);
 }
 
-/* the inner brand glyph */
+/* the inner brand glyph - beating heart of the framework */
 .hero-mark-glyph {
+  position: relative;
   width: 38%;
   height: 38%;
   border-radius: 18%;
@@ -538,6 +539,90 @@ tr:last-child td {
   box-shadow:
     0 12px 32px color-mix(in oklab, var(--primary) 35%, transparent),
     0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent) inset;
+  animation: hero-heartbeat 1.5s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* The ring that ripples outward on each heartbeat */
+.hero-mark-glyph::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid var(--primary);
+  opacity: 0;
+  pointer-events: none;
+  animation: hero-ring-ripple-1 1.5s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Second ripple, offset half a beat for a layered feel */
+.hero-mark-glyph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid var(--primary);
+  opacity: 0;
+  pointer-events: none;
+  animation: hero-ring-ripple-2 1.5s ease-out infinite;
+  animation-delay: 0.21s;
+  will-change: transform, opacity;
+}
+
+@keyframes hero-heartbeat {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      0 12px 32px color-mix(in oklab, var(--primary) 35%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent) inset;
+  }
+  7% {
+    transform: scale(1.06);
+    box-shadow:
+      0 16px 40px color-mix(in oklab, var(--primary) 50%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--primary) 40%, transparent) inset;
+  }
+  14% {
+    transform: scale(1);
+  }
+  21% {
+    transform: scale(1.04);
+    box-shadow:
+      0 14px 36px color-mix(in oklab, var(--primary) 42%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--primary) 35%, transparent) inset;
+  }
+  28% {
+    transform: scale(1);
+    box-shadow:
+      0 12px 32px color-mix(in oklab, var(--primary) 35%, transparent),
+      0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent) inset;
+  }
+}
+
+@keyframes hero-ring-ripple-1 {
+  0%   { opacity: 0; transform: scale(1); }
+  7%   { opacity: 0.55; }
+  100% { opacity: 0; transform: scale(2.6); }
+}
+
+@keyframes hero-ring-ripple-2 {
+  0%   { opacity: 0; transform: scale(1); }
+  7%   { opacity: 0.35; }
+  100% { opacity: 0; transform: scale(2.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark-glyph,
+  .hero-mark-glyph::before,
+  .hero-mark-glyph::after {
+    animation: none;
+  }
+  .hero-mark-glyph::before,
+  .hero-mark-glyph::after {
+    display: none;
+  }
 }
 
 /* ambient floating dots, decorative */
