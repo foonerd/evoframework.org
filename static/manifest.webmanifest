@@ -1,0 +1,29 @@
+{
+  "name": "evo framework",
+  "short_name": "evo",
+  "description": "A brand-neutral steward for appliance-class devices. Everything is a plugin.",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#0a1828",
+  "theme_color": "#00d4aa",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
